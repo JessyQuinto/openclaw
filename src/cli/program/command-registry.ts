@@ -192,6 +192,19 @@ const coreEntries: CoreCliEntry[] = [
   {
     commands: [
       {
+        name: "devops",
+        description: "NexSentinelOps DevOps orchestration tools (CI/CD, IaC, monitoring)",
+        hasSubcommands: true,
+      },
+    ],
+    register: async ({ program }) => {
+      const mod = await import("../devops-cli.js");
+      mod.registerDevopsCli(program);
+    },
+  },
+  {
+    commands: [
+      {
         name: "browser",
         description: "Manage OpenClaw's dedicated browser (Chrome/Chromium)",
         hasSubcommands: true,
